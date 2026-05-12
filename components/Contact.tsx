@@ -27,6 +27,9 @@ export default function Contact() {
     setSubmitStatus('')
 
     try {
+      console.log("SERVICE_ID:", process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID)
+console.log("TEMPLATE_ID:", process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID)
+console.log("PUBLIC_KEY:", process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY)
       // Send email (EmailJS already initialized)
       const response = await emailjs.send(
   process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
@@ -54,10 +57,6 @@ setTimeout(() => {
 }, 5000)
     } catch (error: any) {
   console.log("FULL ERROR OBJECT:", error)
-
-  alert(
-    JSON.stringify(error, null, 2)
-  )
 
   setSubmitStatus('error')
 } finally {
